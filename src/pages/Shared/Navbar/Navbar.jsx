@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
         <div>
-            <div className="navbar fixed z-10 bg-opacity-5 max-w-screen-xl bg-base-100">
+            <div className="navbar fixed z-10 bg-opacity-70 max-w-screen-xl bg-neutral	">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -23,34 +24,21 @@ const Navbar = () => {
                         <ul
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li><a>Item 1</a></li>
-                            <li>
-                                <a>Parent</a>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li>
+                            <li> <Link to='/menu'>Our Menu</Link> </li>
+                            
                             <li><a>Item 3</a></li>
                         </ul>
                     </div >
                     <div>
-                    <a className=" text-3xl text-white font-black font-serif">BISTRO BOSS</a>
-                    <h4 className='text-xl text-white'>R E S T A U R A N T</h4>
+                    <a className=" text-3xl text-white font-black font-serif"><Link to='/'>BISTRO BOSS</Link></a>
+                    <h4 className='text-xl text-white'><Link to='/'>R E S T A U R A N T</Link></h4>
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><a>Item 1</a></li>
-                        <li>
-                            <details>
-                                <summary>Parent</summary>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </details>
-                        </li>
+                    <li> <Link to='/'>Home</Link> </li>
+                    <li> <Link to='/menu'>Our Menu</Link> </li>
+                        
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
