@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Cover = ({img, title, details}) => {
+const Cover = ({ img, title }) => {
     return (
         <div>
             <div
@@ -13,9 +13,9 @@ const Cover = ({img, title, details}) => {
                     <div className="max-w-md">
                         <h1 className="mb-5 text-5xl font-bold uppercase text-white">{title}</h1>
                         <p className="mb-5 text-white">
-                           {details}
+                            {title === 'our menu' && "WOULD YOU LIKE TO TRY A DISH?" || "Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown..."}
                         </p>
-                        
+
                     </div>
                 </div>
             </div>
