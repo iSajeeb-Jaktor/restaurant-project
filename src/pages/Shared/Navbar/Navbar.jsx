@@ -27,6 +27,7 @@ const Navbar = () => {
                             <li> <Link to='/'>Home</Link> </li>
                             <li> <Link to='/menu'>Our Menu</Link> </li>
                             <li> <Link to='/order/salad'>Oder</Link> </li>
+                            <li> <Link to='/login'>Login</Link> </li>
 
                         </ul>
                     </div >
@@ -39,8 +40,8 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li> <Link to='/'>Home</Link> </li>
                         <li className='text-white'> <Link to='/menu'>Our Menu</Link> </li>
-                        <li className='text-white'> <Link to='/order/salad'>Oder</Link> </li>
-                        
+                        <li className='text-white'> <Link to='/order/salad'>Oder</Link></li>
+                        <li className='text-white'> <Link to='/login'>Login</Link> </li>
                     </ul>
                 </div>
                 <div className="navbar-end">
