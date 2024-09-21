@@ -3,6 +3,7 @@ import useAuth from '../../../hooks/useAuth';
 import Swal from 'sweetalert2';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useCart from '../../../hooks/useCart';
 
 
 
@@ -12,11 +13,11 @@ const FoodCard = ({ item }) => {
     const navigate = useNavigate();
     const location = useLoaderData();
     const axiosSecure = useAxiosSecure();
+    const [, refetch] = useCart();
 
-    const handleAddToCart = food => {
-        console.log(food);
+    const handleAddToCart = () => {
         if (user && user.email) {
-            // TODO: send cart item to the database
+            //send cart item to the database
             const cartItem = {
                 menuId: _id,
                 email: user.email,
@@ -26,7 +27,7 @@ const FoodCard = ({ item }) => {
             }
             axiosSecure.post('/carts', cartItem)
                 .then(res => {
-                    console.log(res.data)
+                    // console.log(res.data)
                     if (res.data.insertedId) {
                         Swal.fire({
                             position: "top-end",
@@ -35,6 +36,8 @@ const FoodCard = ({ item }) => {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        // refetch cart to update the cart items count
+                        refetch();
                     }
                 })
         }
@@ -68,7 +71,7 @@ const FoodCard = ({ item }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>{recipe}</p>
                 <div className="card-actions">
-                    <button onClick={() => handleAddToCart(item)} className="btn text-yellow-600 border-b-4 border-yellow-600 hover:bg-black border-0 uppercase">add to cart</button>
+                    <button onClick={handleAddToCart} className="btn text-yellow-600 border-b-4 border-yellow-600 hover:bg-black border-0 uppercase">add to cart</button>
                 </div>
             </div>
         </div>
