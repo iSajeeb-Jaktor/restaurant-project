@@ -3,8 +3,9 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContest } from "../../providers/AuthProvider";
-import "sweetalert2/dist/sweetalert2.all"
+
 import Swal from "sweetalert2";
+
 
 const SignUp = () => {
 
@@ -13,15 +14,15 @@ const SignUp = () => {
     const navigate = useNavigate();
 
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                // console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         
-                    reset();
+                    // reset();
                         Swal.fire({
                             title: "Custom animation with Animate.css",
                             showClass: {
