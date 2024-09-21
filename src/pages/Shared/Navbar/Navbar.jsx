@@ -23,22 +23,7 @@ const NavBar = () => {
         <li><Link to="/menu">Our Menu</Link></li>
         <li><Link to="/order/salad">Order Food</Link></li>
         <li><Link to="/secret">Secret</Link></li>
-        <li>
-            <Link to='/dashboard/cart'>
-                <button className="btn">
-                    <FaShoppingCart className="mr-2"></FaShoppingCart>
-                    <div className="badge badge-secondary">+{cart.length}</div>
-                </button>
-            </Link>
-        </li>
 
-        {
-            user ? <>
-                <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
-            </> : <>
-                <li><Link to="/login">Login</Link></li>
-            </>
-        }
     </>
 
     return (
@@ -60,7 +45,36 @@ const NavBar = () => {
                         {navOptions}
                     </ul>
                 </div>
-                <div className="navbar-end">
+
+                <div className="navbar-end gap-3">
+                    <li className="">
+                        <Link to='/dashboard/cart'>
+
+                            <div className="indicator">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-8 w-8"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth="2"
+                                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span className="badge border-none bg-red-600 text-xl text-black font-semibold badge-sm indicator-item py-3"> {cart.length} </span>
+                            </div>
+
+                        </Link>
+                    </li>
+                    {
+                        user ? <>
+                            <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                        </> : <>
+                            <li><Link to="/login">Login</Link></li>
+                        </>
+                    }
                     <a className="btn">Get started</a>
                 </div>
             </div>
