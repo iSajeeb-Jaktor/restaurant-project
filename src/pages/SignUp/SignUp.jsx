@@ -5,43 +5,53 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContest } from "../../providers/AuthProvider";
 
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 
 const SignUp = () => {
-
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContest);
     const navigate = useNavigate();
 
     const onSubmit = data => {
-        // console.log(data);
+        console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const loggedUser = result.user;
-                // console.log(loggedUser);
+                console.log(loggedUser);
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        
-                    // reset();
-                        Swal.fire({
-                            title: "Custom animation with Animate.css",
-                            showClass: {
-                                popup: `
+                        // create user entry in dataBase
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email
+                        }
+                        axiosPublic.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('we are done it')
+                                    reset();
+                                    Swal.fire({
+                                        title: "Custom animation with Animate.css",
+                                        showClass: {
+                                            popup: `
                                 animate__animated
                                 animate__fadeInUp
                                 animate__faster
                               `
-                            },
-                            hideClass: {
-                                popup: `
+                                        },
+                                        hideClass: {
+                                            popup: `
                                 animate__animated
                                 animate__fadeOutDown
                                 animate__faster
                               `
-                            }
-                        });
-                        navigate('/');
-
+                                        }
+                                    });
+                                    navigate('/');
+                                }
+                            })
                     })
 
             })
