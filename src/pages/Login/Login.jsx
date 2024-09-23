@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 import { AuthContest } from '../../providers/AuthProvider';
+import SocialLogin from '../../Components/SectionTitle/SocialLogin/SocialLogin';
 
 
 
@@ -91,6 +92,12 @@ const Login = () => {
                             </div>
                         </form>
                         <p className='text-center mb-4 text-yellow-600'><small>New Here? <Link to="/signup">Create an account</Link> </small></p>
+                        <div>
+                            <p className='text-center text-black'>Or Sign in with</p>
+                            <div>
+                                <SocialLogin></SocialLogin>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
