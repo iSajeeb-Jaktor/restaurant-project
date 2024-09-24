@@ -1,8 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GithubAuthProvider, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { app } from '../firebase/firebase.config';
 import { signInWithEmailAndPassword } from 'firebase/auth/cordova';
 import useAxiosPublic from '../hooks/useAxiosPublic';
+
 
 
 
@@ -18,6 +19,8 @@ const AuthProvider = ({ children }) => {
     const googleProvider = new GoogleAuthProvider();
 
     const githubProvider = new GithubAuthProvider();
+
+    const facebookProvider = new FacebookAuthProvider();
 
     const axiosPublic = useAxiosPublic();
 
@@ -37,9 +40,14 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, googleProvider)
     }
 
-    const githubLogin = () => {
+    const githubLogIn = () => {
         setLoading(true);
         return signInWithPopup(auth, githubProvider)
+    }
+
+    const facebookLogIn = () => {
+        setLoading(true);
+        return signInWithPopup(auth, facebookProvider)
     }
 
     const logOut = () => {
@@ -83,7 +91,8 @@ const AuthProvider = ({ children }) => {
         createUser,
         signIn,
         googleSignIn,
-        githubLogin,
+        githubLogIn,
+        facebookLogIn,
         logOut,
         updateUserProfile
 

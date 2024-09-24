@@ -27,6 +27,7 @@ const Dashboard = () => {
                     <ul className="menu ">
                         {
                             isAdmin ? <>
+                            
                                 <li className='text-black font-medium text-base uppercase hover:text-white'>
                                     <NavLink to='/dashboard/adminHome'>
                                         <AiFillHome></AiFillHome>
@@ -58,7 +59,8 @@ const Dashboard = () => {
                                     </NavLink>
                                 </li>
 
-                            </>
+                            </>  
+                            // -------- -----------User menu show---------------------------------
                                 :
                                 <>
                                     <li className='text-black font-medium text-base uppercase hover:text-white'>
@@ -100,7 +102,8 @@ const Dashboard = () => {
                                 </>
                         }
 
-                        {/* shared dashBoard */}
+                        {/* -------------------------shared dashBoard ----------------*/}
+
                         <div className="divider divider-neutral"></div>
                         <li className='text-black font-medium text-base uppercase hover:text-white'>
                             <NavLink to='/'>

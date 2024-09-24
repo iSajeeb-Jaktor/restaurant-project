@@ -8,7 +8,9 @@ const SocialLogin = () => {
 
     const { googleSignIn } = useAuth();
 
-    const { githubLogin } = useAuth();
+    const { githubLogIn } = useAuth();
+
+    const {facebookLogIn} = useAuth();
 
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
@@ -29,8 +31,24 @@ const SocialLogin = () => {
             })
     }
 
+    const handleFacebookSignIn = () => {
+        facebookLogIn()
+            .then(result => {
+                console.log(result.user);
+                const facebookUserInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+                axiosPublic.post('/users', facebookUserInfo)
+                    .then(res => {
+                        console.log(res.data);
+                        navigate('/');
+                    })
+            })
+    }
+
     const handleGithubSignIn = () => {
-        githubLogin()
+        githubLogIn()
             .then(result => {
                 console.log(result.user);
                 const gitHubUserInfo = {
@@ -44,9 +62,12 @@ const SocialLogin = () => {
                     })
             })
     }
+
+
+    
     return (
         <div className='py-3'>
-            <button className="btn btn-circle ml-24 border-black">
+            <button onClick={handleFacebookSignIn} className="btn btn-circle ml-24 border-black">
                 <FaFacebookF></FaFacebookF>
             </button>
             <button onClick={handleGoogleSignIn} className="btn btn-circle mx-8 border-black">

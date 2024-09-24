@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContest } from "../../../providers/AuthProvider";
 import { FaShoppingCart } from 'react-icons/fa';
 import useCart from "../../../hooks/useCart";
+import { IoMdLogOut } from "react-icons/io";
 
 
 
@@ -68,20 +69,39 @@ const NavBar = () => {
 
                         </Link>
                     </li>
+
+
                     {
                         user ? <>
-                            <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
-                        </> : <>
-                            <li><Link to="/login">Login</Link></li>
-                        </>
+                            <div className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-15 rounded-full">
+                                        <img
+                                            alt=""
+                                            src={user.photoURL} />
+                                    </div>
+                                </div>
+                                <ul
+                                    tabIndex={0}
+                                    className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                                    <li>
+                                        <Link to='/dashboard/cart' >
+                                            <div className="flex place-items-center	gap-3">
+                                                <div className="w-10 rounded-full">
+                                                    <img
+                                                        alt=""
+                                                        src={user.photoURL} />
+                                                </div>
+                                                <p className=" text-black font-semibold">{user?.displayName}</p>
+                                            </div>
+                                        </Link>
+                                    </li>
+                                    <li> <Link className="text-black text-lg font-semibold py-2" > Profile </Link> </li>
+                                    <li>   <button   onClick={handleLogOut} className="text-black text-lg font-semibold">  <IoMdLogOut className="text-black text-xl font-semibold"></IoMdLogOut> LogOut</button> </li>
+                                </ul>
+                            </div>
+                        </> : <>  <Link to="/login">Login</Link> </>
                     }
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img
-                                alt="Tailwind CSS Navbar component"
-                                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                        </div>
-                    </div>
                 </div>
             </div>
         </>
