@@ -9,9 +9,12 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { IoMail } from 'react-icons/io5';
 import { TfiMenuAlt } from 'react-icons/tfi';
 import useAdmin from '../hooks/useAdmin';
+import useBooking from '../hooks/useBooking';
+
 
 const Dashboard = () => {
     const [cart] = useCart();
+    const [booking] = useBooking();
 
     const [isAdmin] = useAdmin();
 
@@ -47,12 +50,6 @@ const Dashboard = () => {
                                     </NavLink>
                                 </li>
                                 <li className='text-black font-medium my-3 text-base uppercase hover:text-white'>
-                                    <NavLink to='/dashboard/bookings'>
-                                       <FaAd></FaAd>
-                                        Manage bookings
-                                    </NavLink>
-                                </li>
-                                <li className='text-black font-medium my-3 text-base uppercase hover:text-white'>
                                     <NavLink to='/dashboard/users'>
                                         <FaUsers></FaUsers>
                                         All users
@@ -76,7 +73,7 @@ const Dashboard = () => {
                                         </NavLink>
                                     </li>
                                     <li className='text-black font-medium text-base uppercase hover:text-white'>
-                                        <NavLink to='/dashboard/payment'>
+                                        <NavLink to='/dashboard/paymentHistory'>
                                             <MdOutlinePayment></MdOutlinePayment>
                                             Payment history
                                         </NavLink>
@@ -96,11 +93,12 @@ const Dashboard = () => {
                                     <li className='text-black font-medium mt-3 text-base uppercase hover:text-white'>
                                         <NavLink to='/dashboard/bookings'>
                                             <BiSolidCalendarEdit></BiSolidCalendarEdit>
-                                            My booking
+                                            My booking ({booking.length})
                                         </NavLink>
                                     </li>
                                 </>
                         }
+                        
 
                         {/* -------------------------shared dashBoard ----------------*/}
 

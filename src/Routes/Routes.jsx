@@ -8,7 +8,6 @@ import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
-import Secret from "../pages/Shared/Secret/Secret";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
@@ -17,6 +16,19 @@ import AdminRoute from "./AdminRoute";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 import UpdateItem from "../pages/Dashboard/AllUsers/UpdateItem/UpdateItem";
 import Error from "../pages/Error/Error";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import UserHome from "../pages/Dashboard/UserHome/UserHome";
+import Contact from "../pages/Contact/Contact";
+import LocalPayment from "../pages/Dashboard/LocalPayment/LocalPayment";
+import AddReview from "../pages/Dashboard/AddReview/AddReview";
+import Reservation from "../pages/Dashboard/Reservation/Reservation";
+import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
+
+
+
+
 
 
 
@@ -47,8 +59,8 @@ export const router = createBrowserRouter([
         element: <SignUp></SignUp>
       },
       {
-        path: 'secret',
-        element: <PrivateRoute><Secret></Secret></PrivateRoute>
+        path: 'contact',
+        element: <Contact></Contact>
       }
     ]
   },
@@ -58,11 +70,43 @@ export const router = createBrowserRouter([
     children: [
       // normal User routes
       {
+        path: 'userHome',
+        element: <UserHome></UserHome>
+      },
+      {
+        path: 'reservation',
+        element: <Reservation></Reservation>
+      },
+      {
         path: "cart",
         element: <Cart></Cart>
       },
+      {
+        path: "payment",
+        element: <Payment></Payment>
+      },
+      {
+        path:'localPayment',
+        element: <LocalPayment></LocalPayment>
+      },
+      {
+        path:'paymentHistory',
+        element: <PaymentHistory></PaymentHistory>
+      },
+      {
+        path: 'review',
+        element: <AddReview></AddReview>
+      },
+      {
+        path: 'bookings',
+        element: <MyBookings></MyBookings>
+      },
 
       // admin routes
+      {
+        path: 'adminHome',
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+      },
       {
         path: "addItems",
         element: <AdminRoute><AddItems></AddItems></AdminRoute>

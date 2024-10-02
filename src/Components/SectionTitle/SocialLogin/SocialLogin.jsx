@@ -35,11 +35,11 @@ const SocialLogin = () => {
         facebookLogIn()
             .then(result => {
                 console.log(result.user);
-                const facebookUserInfo = {
+                const UserInfo = {
                     email: result.user?.email,
                     name: result.user?.displayName
                 }
-                axiosPublic.post('/users', facebookUserInfo)
+                axiosPublic.post('/users', UserInfo)
                     .then(res => {
                         console.log(res.data);
                         navigate('/');
@@ -51,11 +51,11 @@ const SocialLogin = () => {
         githubLogIn()
             .then(result => {
                 console.log(result.user);
-                const gitHubUserInfo = {
+                const UserInfo = {
                     email: result.user?.email,
                     name: result.user?.displayName
                 }
-                axiosPublic.post('/users', gitHubUserInfo)
+                axiosPublic.post('/users', UserInfo)
                     .then(res => {
                         console.log(res.data);
                         navigate('/');
@@ -66,16 +66,16 @@ const SocialLogin = () => {
 
     
     return (
-        <div className='py-3'>
-            <button onClick={handleFacebookSignIn} className="btn btn-circle ml-24 border-black">
+        <div className='flex justify-center py-3'>
+            {/* <button onClick={handleFacebookSignIn} className="btn btn-circle ml-24 border-black">
                 <FaFacebookF></FaFacebookF>
-            </button>
+            </button> */}
             <button onClick={handleGoogleSignIn} className="btn btn-circle mx-8 border-black">
                 <FaGoogle></FaGoogle>
             </button>
-            <button onClick={handleGithubSignIn} className="btn btn-circle border-black">
+            {/* <button onClick={handleGithubSignIn} className="btn btn-circle border-black">
                 <FaGithub></FaGithub>
-            </button>
+            </button> */}
         </div>
     );
 };

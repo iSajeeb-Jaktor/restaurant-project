@@ -6,8 +6,9 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import { FaUsers } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 
-const AllUsers = () => {
 
+const AllUsers = () => {
+    
     const axiosSecure = useAxiosSecure();
 
     const { data: users = [], refetch } = useQuery({
@@ -18,7 +19,7 @@ const AllUsers = () => {
         }
     })
 
-
+    // Admin role-------------------------------------------------------------
     const handleMakeAdmin = user => {
         axiosSecure.patch(`/users/admin/${user._id}`)
             .then(res => {
@@ -36,6 +37,7 @@ const AllUsers = () => {
             })
     }
 
+    
 
     const handleDeleteUser = user => {
         Swal.fire({
@@ -76,11 +78,12 @@ const AllUsers = () => {
                 <div className="overflow-x-auto">
                     <table className="table">
                         {/* head */}
-                        <thead>
+                        <thead className='bg-orange-400 uppercase text-white'>
                             <tr>
                                 <th>  </th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>role</th>
                                 <th>role</th>
                                 <th>action</th>
                             </tr>
@@ -98,6 +101,7 @@ const AllUsers = () => {
                                             </button>
                                         }
                                     </td>
+                                    
                                     <td>
                                         <button onClick={() => handleDeleteUser(user)} className="btn bg-red-700 text-lg text-white"> <RiDeleteBin5Line></RiDeleteBin5Line>
                                         </button>

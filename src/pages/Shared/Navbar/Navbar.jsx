@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContest } from "../../../providers/AuthProvider";
-import { FaShoppingCart } from 'react-icons/fa';
 import useCart from "../../../hooks/useCart";
 import { IoMdLogOut } from "react-icons/io";
+import useAdmin from "../../../hooks/useAdmin";
+
+
+
 
 
 
@@ -12,6 +15,9 @@ import { IoMdLogOut } from "react-icons/io";
 const NavBar = () => {
     const { user, logOut } = useContext(AuthContest);
     const [cart] = useCart();
+    const [isAdmin] = useAdmin();
+    
+
 
     const handleLogOut = () => {
         logOut()
@@ -23,7 +29,7 @@ const NavBar = () => {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/menu">Our Menu</Link></li>
         <li><Link to="/order/salad">Order Food</Link></li>
-        <li><Link to="/secret">Secret</Link></li>
+        <li><Link to="/contact">Contact Us</Link></li>
 
     </>
 
@@ -85,19 +91,30 @@ const NavBar = () => {
                                     tabIndex={0}
                                     className="menu menu-sm dropdown-content bg-white rounded-box z-[1] mt-3 w-52 p-2 shadow">
                                     <li>
-                                        <Link to='/dashboard/cart' >
-                                            <div className="flex place-items-center	gap-3">
-                                                <div className="w-10 rounded-full">
-                                                    <img
-                                                        alt=""
-                                                        src={user.photoURL} />
+                                        {
+                                            isAdmin ? <><Link to='/dashboard/adminHome' >
+                                                <div className="flex place-items-center	gap-3">
+                                                    <div className="w-10 rounded-full">
+                                                        <img
+                                                            alt=""
+                                                            src={user.photoURL} />
+                                                    </div>
+                                                    <p className=" text-black font-semibold">{user?.displayName}</p>
                                                 </div>
-                                                <p className=" text-black font-semibold">{user?.displayName}</p>
-                                            </div>
-                                        </Link>
+                                            </Link></> : <> <Link to='/dashboard/userHome' >
+                                                <div className="flex place-items-center	gap-3">
+                                                    <div className="w-10 rounded-full">
+                                                        <img
+                                                            alt=""
+                                                            src={user.photoURL} />
+                                                    </div>
+                                                    <p className=" text-black font-semibold">{user?.displayName}</p>
+                                                </div>
+                                            </Link></>
+                                        }
                                     </li>
                                     <li> <Link className="text-black text-lg font-semibold py-2" > Profile </Link> </li>
-                                    <li>   <button   onClick={handleLogOut} className="text-black text-lg font-semibold">  <IoMdLogOut className="text-black text-xl font-semibold"></IoMdLogOut> LogOut</button> </li>
+                                    <li>   <button onClick={handleLogOut} className="text-black text-lg font-semibold">  <IoMdLogOut className="text-black text-xl font-semibold"></IoMdLogOut> LogOut</button> </li>
                                 </ul>
                             </div>
                         </> : <>  <Link to="/login">Login</Link> </>

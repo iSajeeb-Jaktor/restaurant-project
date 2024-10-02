@@ -4,6 +4,7 @@ import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const [cart, refetch] = useCart();
@@ -22,16 +23,16 @@ const Cart = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure.delete(`/carts/${id}`)
-                .then(res => {
-                   if(res.data.deletedCount > 0){
-                    refetch();
-                    Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success"
-                        });
-                   }
-                })
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
             }
         });
 
@@ -39,18 +40,26 @@ const Cart = () => {
     return (
         <div>
             <SectionTitle
-                subheading='My cart'
+                subheading=' My cart '
                 heading="Want add more?"
             ></SectionTitle>
             <div className='flex justify-evenly mt-8 '>
-                <h2 className='text-4xl text-black'>Items: {cart.length}</h2>
-                <h2 className='text-4xl text-black'>Total price: ${totalPrice}</h2>
-                <button className='px-4 py-2 rounded bg-orange-400 text-white'>Pay</button>
+                <h2 className='text-4xl font-semibold text-black'>Items: {cart.length}</h2>
+                <h2 className='text-4xl font-semibold text-black'>Total price: ${totalPrice}</h2>
+                {cart.length ? <Link to="/dashboard/payment">
+                    <button className='px-4 py-2 rounded bg-orange-400 text-white'> Visa Pay</button>
+                </Link> : <button disabled className='btn px-4 py-2 rounded text-lg  bg-orange-400 text-white'> Visa Pay</button>
+                }
+                {cart.length ? <Link to="/dashboard/localPayment">
+                    <button className='px-4 py-2 rounded bg-orange-400 text-white'>Pay</button>
+                </Link> : <button disabled className='btn px-4 py-2 rounded text-lg  bg-orange-400 text-white'> Visa Pay</button>
+                }
+
             </div>
             <div className="overflow-x-auto rounded-t-lg  mt-10 mb-12">
                 <table className="table w-full">
                     {/* head */}
-                    <thead className='bg-orange-400  text-white'>
+                    <thead className='bg-orange-400  text-lg font-semibold text-white'>
                         <tr>
                             <th>  </th>
                             <th>Item Image</th>
