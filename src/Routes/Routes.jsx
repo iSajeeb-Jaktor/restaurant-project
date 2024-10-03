@@ -21,7 +21,7 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import Contact from "../pages/Contact/Contact";
-import LocalPayment from "../pages/Dashboard/LocalPayment/LocalPayment";
+
 import AddReview from "../pages/Dashboard/AddReview/AddReview";
 import Reservation from "../pages/Dashboard/Reservation/Reservation";
 import MyBookings from "../pages/Dashboard/MyBookings/MyBookings";
@@ -84,10 +84,6 @@ export const router = createBrowserRouter([
       {
         path: "payment",
         element: <Payment></Payment>
-      },
-      {
-        path:'localPayment',
-        element: <LocalPayment></LocalPayment>
       },
       {
         path:'paymentHistory',

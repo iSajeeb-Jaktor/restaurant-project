@@ -50,10 +50,7 @@ const Cart = () => {
                     <button className='px-4 py-2 rounded bg-orange-400 text-white'> Visa Pay</button>
                 </Link> : <button disabled className='btn px-4 py-2 rounded text-lg  bg-orange-400 text-white'> Visa Pay</button>
                 }
-                {cart.length ? <Link to="/dashboard/localPayment">
-                    <button className='px-4 py-2 rounded bg-orange-400 text-white'>Pay</button>
-                </Link> : <button disabled className='btn px-4 py-2 rounded text-lg  bg-orange-400 text-white'> Visa Pay</button>
-                }
+                
 
             </div>
             <div className="overflow-x-auto rounded-t-lg  mt-10 mb-12">

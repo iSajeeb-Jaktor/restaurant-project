@@ -101,7 +101,7 @@ const NavBar = () => {
                                                     </div>
                                                     <p className=" text-black font-semibold">{user?.displayName}</p>
                                                 </div>
-                                            </Link></> : <> <Link to='/dashboard/userHome' >
+                                            </Link></> :  <> <Link to='/dashboard/userHome' >
                                                 <div className="flex place-items-center	gap-3">
                                                     <div className="w-10 rounded-full">
                                                         <img
@@ -113,7 +113,9 @@ const NavBar = () => {
                                             </Link></>
                                         }
                                     </li>
-                                    <li> <Link className="text-black text-lg font-semibold py-2" > Profile </Link> </li>
+
+                                    {/* -------------- Log Out Button ------------------------------ */}
+
                                     <li>   <button onClick={handleLogOut} className="text-black text-lg font-semibold">  <IoMdLogOut className="text-black text-xl font-semibold"></IoMdLogOut> LogOut</button> </li>
                                 </ul>
                             </div>
