@@ -1,5 +1,5 @@
 import React from 'react';
-import FoodCard from '../../../Components/SectionTitle/FoodCard/FoodCard';
+import FoodCard from '../../../Components/FoodCard/FoodCard';
 
 const OrderTab = ({ items }) => {
     

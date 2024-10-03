@@ -3,12 +3,12 @@ import emailjs from '@emailjs/browser';
 import contactCoverImg from '../../assets/contact/banner.jpg'
 import { Helmet } from 'react-helmet-async';
 import Cover from '../Shared/Cover/Cover';
-import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 import { FiPhoneCall } from 'react-icons/fi';
 import { IoLocationSharp } from 'react-icons/io5';
 import { MdWatchLater } from 'react-icons/md';
 import ReCAPTCHA from "react-google-recaptcha";
 import Swal from 'sweetalert2';
+import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 
 
 
@@ -49,7 +49,7 @@ const Contact = () => {
 
             </Helmet>
             <Cover img={contactCoverImg} title="Contact us"></Cover>
-            <SectionTitle subheading=" Visit us " heading='our location'></SectionTitle>
+            <SectionTitle subheading=" Visit us " heading='our location' ></SectionTitle>
             <div className='flex justify-evenly mb-28'>
                 <div>
                     <button className='btn px-28 text-2xl rounded-none bg-yellow-600 text-white hover:bg-yellow-600 '> <FiPhoneCall></FiPhoneCall></button>

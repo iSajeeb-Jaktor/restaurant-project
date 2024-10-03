@@ -1,9 +1,10 @@
 import React from 'react';
-import useAuth from '../../../hooks/useAuth';
+
 import Swal from 'sweetalert2';
 import { useLoaderData, useNavigate } from 'react-router-dom';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import useCart from '../../../hooks/useCart';
+import useAuth from '../../hooks/useAuth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import useCart from '../../hooks/useCart';
 
 
 

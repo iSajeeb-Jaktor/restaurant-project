@@ -7,7 +7,7 @@ import signUpImg from '../../assets/others/authentication2.png'
 
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxiosPublic";
-import SocialLogin from "../../Components/SectionTitle/SocialLogin/SocialLogin";
+import SocialLogin from "../../Components/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
