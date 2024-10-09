@@ -111,7 +111,7 @@ const Reservation = () => {
                         {/* email */}
                         <label className="form-control w-full my-6">
                             <div className="label">
-                                <span className="label-text">Time*</span>
+                                <span className="label-text">Email*</span>
                             </div>
                             <input {...register("email", { required: true })} type="email" placeholder="Your Email" className="input input-bordered w-full" />
                         </label>

@@ -95,7 +95,7 @@ const CheckOutForm = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Thank you for yor payment.",
+                        title: "Thank you for your payment.",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -128,16 +128,13 @@ const CheckOutForm = () => {
                     }}
                 />
                 <div className='flex justify-center mt-28'>
-                    <button className="btn btn-sm btn-primary my-4 px-24 text-white font-semibold text-lg" type="submit" disabled={!stripe || !clientSecret}>
+                    <button className="btn btn-sm btn-primary my-4 px-24 text-white text-xl font-semibold text-lg" type="submit" disabled={!stripe || !clientSecret}>
                         International Pay
                     </button>
                 </div>
                 <p className='text-red-600'>{error}</p>
                 {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
             </form>
-            <div className='flex justify-end mt-16'>
-                <Link to='/dashboard/localPayment'><button className='btn bg-yellow-600 hover:bg-yellow-700 text-lg font-semibold text-white mt-4' >Redirect to Local Payment </button></Link>
-            </div>
         </>
 
 
