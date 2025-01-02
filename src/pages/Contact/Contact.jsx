@@ -6,7 +6,7 @@ import Cover from '../Shared/Cover/Cover';
 import { FiPhoneCall } from 'react-icons/fi';
 import { IoLocationSharp } from 'react-icons/io5';
 import { MdWatchLater } from 'react-icons/md';
-import ReCAPTCHA from "react-google-recaptcha";
+
 import Swal from 'sweetalert2';
 import SectionTitle from '../../Components/SectionTitle/SectionTitle';
 
@@ -101,13 +101,10 @@ const Contact = () => {
                         </div>
                         <textarea required placeholder='Write your message here' className="textarea textarea-bordered h-80" name="message" />
                     </label>
-                    <ReCAPTCHA className='mt-10'
-                        sitekey='6Lcs0FEqAAAAANsvBeqQaqPyUHhgs2ygPCwbCAQF'
-                        onChange={(value => setCapValue(value))}
-                    />
+                    
                     
                     <div className='mt-36 mb-96 flex justify-center'>
-                        <input disabled={!capValue} className='btn font-semibold text-lg rounded-none hover:bg-orange-500 bg-orange-500 text-white px-14' type="submit" value="Send Message" />
+                        <input className='btn font-semibold text-lg rounded-none hover:bg-orange-500 bg-orange-500 text-white px-14' type="submit" value="Send Message" />
                     </div>
                 </form>
             </div>
